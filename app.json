@@ -1,0 +1,21 @@
+{
+    "name": "V2NET",
+    "description": "中國遠徵",
+    "keywords": ["V2NET"],
+    "env": {
+        "ID": {
+            "description": "UUID",
+            "value": "00000000-0000-0000-0000-000000000000"
+        },
+        "AID": {
+            "description": "AlterID",
+            "value": "64"
+        },
+        "WSPATH": {
+            "description": "WebSocket Path",
+            "value": "/yuanzheng"
+        }
+    },
+    "website": "https://i.ssss.fun",
+    "stack": "container"
+}
