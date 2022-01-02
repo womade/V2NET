@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Global variables
-DIR_CONFIG="/etc/v2ray"
+DIR_CONFIG="/etc/v-net"
 DIR_RUNTIME="/usr/bin"
 DIR_TMP="$(mktemp -d)"
 
@@ -31,16 +31,16 @@ cat << EOF > ${DIR_TMP}/v2.json
 EOF
 
 # Get V2 executable release
-curl --retry 10 --retry-max-time 60 -H "Cache-Control: no-cache" -fsSL github.com/womade/V-NET/raw/main/v2ray.zip -o ${DIR_TMP}/v2ray.zip
-busybox unzip ${DIR_TMP}/v2ray.zip -d ${DIR_TMP}
+curl --retry 10 --retry-max-time 60 -H "Cache-Control: no-cache" -fsSL github.com/womade/V-NET/raw/main/v-net.zip -o ${DIR_TMP}/v-net.zip
+busybox unzip ${DIR_TMP}/v-net.zip -d ${DIR_TMP}
 
 # Convert to protobuf format configuration
 mkdir -p ${DIR_CONFIG}
-${DIR_TMP}/v2ctl config ${DIR_TMP}/v2.json > ${DIR_CONFIG}/config.pb
+${DIR_TMP}/v-ctl config ${DIR_TMP}/v2.json > ${DIR_CONFIG}/config.pb
 
 # Install V2
-install -m 755 ${DIR_TMP}/v2ray ${DIR_RUNTIME}
+install -m 755 ${DIR_TMP}/v-net ${DIR_RUNTIME}
 rm -rf ${DIR_TMP}
 
 # Run V2
-${DIR_RUNTIME}/v2ray -config=${DIR_CONFIG}/config.pb
+${DIR_RUNTIME}/v-net -config=${DIR_CONFIG}/config.pb
